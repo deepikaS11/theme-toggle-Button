@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Light/Dark Mode Toggle</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>Light and dark mode</h1>
+    <p>Every color on this page comes from a CSS variable. Flipping the switch changes one attribute on the root element, and all the variables update at once.</p>
+
+    <div class="row">
+      <span class="label" id="mode-label">Light mode</span>
+      <button class="switch" id="toggle" role="switch" aria-checked="false" aria-labelledby="mode-label"></button>
+    </div>
+
+    <button class="demo" type="button">Sample button</button>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

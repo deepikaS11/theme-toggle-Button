@@ -1,0 +1,90 @@
+/* 1. Colors live in CSS variables. Light is the default. */
+:root {
+  --bg: #f6f3ee;
+  --surface: #ffffff;
+  --text: #1d2433;
+  --muted: #5c6578;
+  --border: #ddd6ca;
+  --accent: #2f5fd0;
+  --accent-text: #ffffff;
+}
+
+/* 2. Dark theme: same variable names, new values. */
+:root[data-theme="dark"] {
+  --bg: #12151c;
+  --surface: #1c212c;
+  --text: #eceff5;
+  --muted: #9aa3b5;
+  --border: #2f3646;
+  --accent: #7ea2ff;
+  --accent-text: #0e1220;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  font-family: Georgia, "Times New Roman", serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background .3s, color .3s;
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  transition: background .3s, border-color .3s;
+}
+
+h1 { margin: 0 0 8px; font-size: 1.6rem; }
+p  { margin: 0 0 20px; line-height: 1.6; color: var(--muted); }
+
+.row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.label { font-family: system-ui, sans-serif; font-size: .95rem; }
+
+/* 3. The toggle switch */
+.switch {
+  position: relative;
+  width: 60px;
+  height: 32px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  cursor: pointer;
+  padding: 0;
+  transition: background .3s;
+}
+.switch::after {
+  content: "";
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--accent);
+  transition: transform .3s;
+}
+.switch[aria-checked="true"]::after { transform: translateX(28px); }
+.switch:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+button.demo {
+  margin-top: 24px;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font: 600 .95rem system-ui, sans-serif;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
